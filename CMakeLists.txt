@@ -16,5 +16,7 @@ add_executable(GoL
     GraphicsManager.cpp
     GameEngine.h
     GameEngine.cpp
+    DerivationStrategy.h
+    DerivationStrategy.cpp
     )
 target_link_libraries(GoL SDL2 SDL2_image SDL2_mixer SDL2_ttf)
