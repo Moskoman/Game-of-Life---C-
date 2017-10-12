@@ -20,5 +20,7 @@ add_executable(GoL
     DerivationStrategy.cpp
     Cell.h
     Cell.cpp
+    InputHandler.h
+    InputHandler.cpp
     )
 target_link_libraries(GoL SDL2 SDL2_image SDL2_mixer SDL2_ttf)
