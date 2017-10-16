@@ -14,6 +14,16 @@ GraphicsManager::GraphicsManager (){
   }
   instance = this;
 
+    horizontalLine = IMG_Load ("Assets/line.png");
+    verticalLine = IMG_Load ("Assets/verticalLine.png");
+    cellSprite = IMG_Load ("Assets/cell.png");
+    deadCell = IMG_Load ("Assets/deadCell.png");
+    HoriRect.x = 0;
+    HoriRect.y = 99;
+    VertRect.x = 0;
+    VertRect.y = 99;
+    cellSize.w = 80;
+    cellSize.h = 50;
 };
 
 //Destructor
@@ -21,15 +31,38 @@ GraphicsManager::~GraphicsManager () {};
 
 //Run (Update)
   void GraphicsManager::Run(){
-    SDL_UpdateWindowSurface (gameWindow);}
+    SDL_UpdateWindowSurface (gameWindow);
+    GridDrawer (horizontalLine, verticalLine);  
+  };
 
 //Applies images to the screen
-  void GraphicsManager::Drawer (SDL_Surface *sprite){
-    SDL_BlitSurface (sprite, NULL, surfaceWindow, NULL);};
+  void GraphicsManager::GridDrawer (SDL_Surface *horizontalLine, SDL_Surface *verticalLine){
+    while (HoriRect.y <= 800){
+        SDL_BlitSurface (horizontalLine, NULL, surfaceWindow, &HoriRect);
+        SDL_BlitSurface (verticalLine, NULL, surfaceWindow, &VertRect);
+        VertRect.x += 80;
+        HoriRect.y += 50;
+        };
+      };
+
+  void GraphicsManager::CellDrawer (vector <Cell*> Cells) {
+        for (auto x = 0; x < Cells.size(); x++){
+          cellSize.x = (Cells[x]->posX * cellSize.w);
+          cellSize.y = (((Cells[x]->posY + 1) * cellSize.h) + 50);
+          if (Cells[x]->getState() == true){
+          //  SDL_BlitScaled (deadCell, NULL, surfaceWindow, &cellSize);  
+          //}
+          //else{
+          SDL_BlitScaled (cellSprite, NULL, surfaceWindow, &cellSize);
+          //cout << Cells[x]->posX << " " << Cells[x]->posY << endl;
+          };
+
+        };
+  };
 
 //Creates Window and Renderer
   void GraphicsManager::CreateWindow (){
-    gameWindow =  SDL_CreateWindow ("Game of Life", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1024, 768, SDL_WINDOW_SHOWN);
+    gameWindow =  SDL_CreateWindow ("LG's Game of Life", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ScreenWidth, ScreenHeight, SDL_WINDOW_SHOWN);
     if (gameWindow == NULL){
       cout << "Window initialization error: " << SDL_GetError () << endl;}
     else {

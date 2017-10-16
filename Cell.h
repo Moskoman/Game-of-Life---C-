@@ -1,3 +1,5 @@
+#ifndef CELL_H
+#define CELL_H
 #include <iostream>
 using namespace std;
 
@@ -9,9 +11,15 @@ public:
 
   ~Cell ();
 
-private:
-  bool isAlive;
   int posX, posY;
 
   void setState (bool);
+
+  bool getState ();
+  
+private:
+  bool isAlive;
+
 };
+
+#endif

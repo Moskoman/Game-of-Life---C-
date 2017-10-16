@@ -1,3 +1,5 @@
+#ifndef DERIVATIONSTRATEGY_H
+#define DERIVATIONSTRATEGY_H
 #include <iostream>
 #include "GameEngine.h"
 using namespace std;
@@ -10,11 +12,16 @@ public:
   DerivationStrategy ();
   ~DerivationStrategy ();
 
+ //Run
+  	void Run ();
+
 //Game Methods
-  void ShouldRevive ();
-  void ShouldKeepAlive ();
+  vector <Cell*> ShouldRevive ();
+  vector <Cell*> ShouldKeepAlive ();
 
 //Instance
   static DerivationStrategy* instance;
 
 };
+
+#endif

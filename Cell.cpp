@@ -14,3 +14,8 @@
   void Cell::setState (bool State){
     this->isAlive = State;
   }
+
+  bool Cell::getState () {
+
+  	return isAlive;
+  };
