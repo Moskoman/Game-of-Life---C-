@@ -24,18 +24,17 @@ void DerivationStrategy::Run() {
 	NextGeneration.reserve (ReviveList.size() + KeepAliveList.size());
 	NextGeneration.insert (NextGeneration.begin(), ReviveList.begin(), ReviveList.end());
 	NextGeneration.insert (NextGeneration.end(), KeepAliveList.begin(), KeepAliveList.end());
+	for (auto i = 0; i < Cells.size(); i++){
+		Cells[i]->setState(false);
+	};
 	for (auto i = 0; i < NextGeneration.size(); i++){
 		for (auto f = 0; f < Cells.size(); f++){
 			if (NextGeneration[i]->posX == Cells[f]->posX && NextGeneration[i]->posY == Cells[f]->posY){
 				Cells[f]->setState (true);
-			}
-			//else {
-			//	Cells[f]->setState (false);
-			//};
+			};
 		};
 	};
-	//this->Cells = NextGeneration;
-	
+	NextGeneration.clear();
 };
 
 

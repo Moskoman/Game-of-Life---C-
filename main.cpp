@@ -15,16 +15,14 @@ int main (int argc, char* args[]){
     D1.Revive (4, 3);
     D1.Revive (4, 4);
     D1.Revive (4, 5);
+    D1.Revive (7, 6);
+    D1.Revive (8, 8);
+    D1.Revive (3, 6);
+    D1.Revive (6, 7);
     while (Handler.UserQuits () != true){
     	Handler.ReadInput ();
     	GameView.Run();
     	SDL_Delay (1000);
-    	for (auto f = 0; f < D1.Cells.size(); f++){
-			if (D1.Cells[f]->getState() == true){
-				cout << D1.Cells[f]->posX << " " << D1.Cells[f]->posY << endl;
-
-			};
-		};
     	GameView.CellDrawer (D1.Cells);
     	D1.Run();
     };

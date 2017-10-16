@@ -31,8 +31,8 @@ GraphicsManager::~GraphicsManager () {};
 
 //Run (Update)
   void GraphicsManager::Run(){
-    SDL_UpdateWindowSurface (gameWindow);
     GridDrawer (horizontalLine, verticalLine);  
+    SDL_UpdateWindowSurface (gameWindow);
   };
 
 //Applies images to the screen
@@ -43,6 +43,8 @@ GraphicsManager::~GraphicsManager () {};
         VertRect.x += 80;
         HoriRect.y += 50;
         };
+        HoriRect.y = 99;
+        VertRect.x = 80;
       };
 
   void GraphicsManager::CellDrawer (vector <Cell*> Cells) {
@@ -50,11 +52,10 @@ GraphicsManager::~GraphicsManager () {};
           cellSize.x = (Cells[x]->posX * cellSize.w);
           cellSize.y = (((Cells[x]->posY + 1) * cellSize.h) + 50);
           if (Cells[x]->getState() == true){
-          //  SDL_BlitScaled (deadCell, NULL, surfaceWindow, &cellSize);  
-          //}
-          //else{
           SDL_BlitScaled (cellSprite, NULL, surfaceWindow, &cellSize);
-          //cout << Cells[x]->posX << " " << Cells[x]->posY << endl;
+          }
+          else{
+          SDL_BlitScaled (deadCell, NULL, surfaceWindow, &cellSize);  
           };
 
         };
