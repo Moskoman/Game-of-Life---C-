@@ -10,11 +10,21 @@ Menu::Menu () {
 
 
   LoadSpriteToArray ("Assets/Menu/bg.png");
-  SDL_Rect newRect;
-  	newRect.x = 0;
-	newRect.y = 0;
-	newRect.w = 801;
-	newRect.h = 601;
-rectArray.push_back (&newRect);
-  //LoadRectToArray (0, 0, 801, 601);
+  rectMenuBG.x = rectMenuBG.y = 0;
+  rectMenuBG.w = 801;
+  rectMenuBG.h = 601;
+  rectArray.push_back (&rectMenuBG);
+  LoadSpriteToArray ("Assets/Menu/playButton.png");
+  //LoadRectToArray (300, 400, 200, 100);
+  rectPlayButton.x = 300;
+  rectPlayButton.y = 400;
+  rectPlayButton.w = 200;
+  rectPlayButton.h = 100;
+  rectArray.push_back (&rectPlayButton);
+};
+
+Menu::~Menu(){};
+
+void Menu::Loader() {
+	int i = 2;
 };

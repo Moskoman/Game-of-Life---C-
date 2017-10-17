@@ -9,7 +9,7 @@
 
 
 	//Reading
-	void InputHandler::ReadInput () {
+	bool InputHandler::ReadInput () {
 
 		while (SDL_PollEvent (&event) != 0){
 
@@ -22,9 +22,5 @@
 				cout << "mouse" << mouseX << " " << mouseY  << endl;
 			}
 		}
-	};
-
-	bool InputHandler::UserQuits () {
-
 		return quit;
 	};

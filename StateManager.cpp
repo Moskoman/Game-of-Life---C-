@@ -13,6 +13,9 @@ StateManager::StateManager() {
 
 SetState(1);
 
+InputHandler Handler ();
+hasQuit = false;
+
 
 };
 
@@ -31,4 +34,14 @@ State* StateManager::CreateState (int newState){
 	}
 
 	return returnNewState;
+};
+
+bool StateManager::UserQuits () {
+	return hasQuit;
+};
+
+void StateManager::Update () {
+	if (Handler.ReadInput () == true){
+		hasQuit = true;
+	};
 };

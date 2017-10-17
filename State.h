@@ -23,6 +23,7 @@ public:
 
 	void LoadRectToArray (int x, int y, int w, int h);
 
+	
 	protected:
 		static State *instance;
 		SDL_Rect newRect;

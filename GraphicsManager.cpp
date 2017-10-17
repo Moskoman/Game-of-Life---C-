@@ -82,8 +82,8 @@ GraphicsManager::~GraphicsManager () {};
 
   void GraphicsManager::RenderArray (vector <SDL_Surface*> spriteArray, vector <SDL_Rect*> rectArray) {
     for (auto current = 0; current < spriteArray.size(); current++){
-      SDL_BlitSurface (spriteArray[current], NULL, surfaceWindow, rectArray[current]);
-    };
+      SDL_BlitScaled (spriteArray[current], NULL, surfaceWindow, rectArray[current]);
+     };
   };
 
   void GraphicsManager::SetGridSize (int gridSize){

@@ -1,3 +1,5 @@
+#ifndef INPUTHANDLER_H
+#define INPUTHANDLER_H
 #include "SDL.h"
 #include <iostream>
 using namespace std;
@@ -12,9 +14,8 @@ public:
 	~InputHandler ();
 
 	//Handles Inputs
-	void ReadInput ();
+	bool ReadInput ();
 
-	bool UserQuits ();
 
 private:
 
@@ -25,3 +26,5 @@ private:
 
 
 };
+
+#endif
