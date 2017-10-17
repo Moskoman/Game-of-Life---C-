@@ -18,7 +18,9 @@ public:
 
   void CreateWindow ();
 
+  void RenderArray (vector <SDL_Surface*> spriteArray, vector <SDL_Rect*> rectArray);
 
+  void SetGridSize (int gridSize);
 
 private:
   void GridDrawer (SDL_Surface *horizontalLine, SDL_Surface *verticalLine);
@@ -35,5 +37,7 @@ private:
   SDL_Rect VertRect;
   SDL_Rect cellSize;
   int ScreenWidth = 801;
-  int ScreenHeight = 600;
+  int ScreenHeight = 601;
+  int gridSize;
+  
 };

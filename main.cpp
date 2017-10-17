@@ -1,5 +1,6 @@
 #include "SDL2/SDL.h"
 #include "DerivationStrategy.h"
+#include "StateManager.h"
 #include "InputHandler.h"
 #include "Cell.h"
 #include "GraphicsManager.h"
@@ -7,23 +8,23 @@
 using namespace std;
 
 int main (int argc, char* args[]){
-    GraphicsManager GameView;
+	StateManager manageStates {};
+    GraphicsManager GameView {};
     GameView.CreateWindow ();
     InputHandler Handler;
     DerivationStrategy D1;
-    D1.Populate (10);
-    D1.Revive (4, 3);
-    D1.Revive (4, 4);
-    D1.Revive (4, 5);
-    D1.Revive (7, 6);
-    D1.Revive (8, 8);
-    D1.Revive (3, 6);
-    D1.Revive (6, 7);
+    D1.Populate (50);
+    D1.Revive (0, 2);
+    D1.Revive (1, 2);
+    D1.Revive (2, 2);
+    D1.Revive (2, 1);
+    D1.Revive (1, 0);
+//    D1.Revive (8, 6);
+//    D1.Revive (8, 7);
     while (Handler.UserQuits () != true){
     	Handler.ReadInput ();
-    	GameView.Run();
-    	SDL_Delay (1000);
-    	GameView.CellDrawer (D1.Cells);
-    	D1.Run();
+        GameView.RenderArray (manageStates.currentState->getSpriteArray(), manageStates.currentState->getRectArray());
+        GameView.Run();
+
     };
 };

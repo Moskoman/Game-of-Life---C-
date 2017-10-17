@@ -16,6 +16,11 @@
 			if (event.type == SDL_QUIT){
 				quit = true;
 			}
+
+			if (event.type == SDL_MOUSEBUTTONDOWN){
+				SDL_GetMouseState(&mouseX, &mouseY);
+				cout << "mouse" << mouseX << " " << mouseY  << endl;
+			}
 		}
 	};
 

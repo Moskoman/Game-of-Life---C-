@@ -22,5 +22,11 @@ add_executable(GoL
     Cell.cpp
     InputHandler.h
     InputHandler.cpp
+    StateManager.h
+    StateManager.cpp
+    State.h
+    State.cpp
+    Menu.h
+    Menu.cpp
     )
 target_link_libraries(GoL SDL2 SDL2_image SDL2_mixer SDL2_ttf)

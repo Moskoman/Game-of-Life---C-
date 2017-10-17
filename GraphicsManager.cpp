@@ -11,7 +11,7 @@ GraphicsManager::GraphicsManager (){
   if (instance != nullptr){
     cerr << "Too many GraphicsManager instances" << endl;
     exit (1);
-  }
+  };
   instance = this;
 
     horizontalLine = IMG_Load ("Assets/line.png");
@@ -22,8 +22,6 @@ GraphicsManager::GraphicsManager (){
     HoriRect.y = 99;
     VertRect.x = 0;
     VertRect.y = 99;
-    cellSize.w = 80;
-    cellSize.h = 50;
 };
 
 //Destructor
@@ -31,26 +29,30 @@ GraphicsManager::~GraphicsManager () {};
 
 //Run (Update)
   void GraphicsManager::Run(){
-    GridDrawer (horizontalLine, verticalLine);  
+    //GridDrawer (horizontalLine, verticalLine);  
     SDL_UpdateWindowSurface (gameWindow);
   };
 
 //Applies images to the screen
   void GraphicsManager::GridDrawer (SDL_Surface *horizontalLine, SDL_Surface *verticalLine){
+    cellSize.w = ScreenWidth / gridSize;
+    cellSize.h = (ScreenHeight - HoriRect.y) / gridSize;
+
+
     while (HoriRect.y <= 800){
         SDL_BlitSurface (horizontalLine, NULL, surfaceWindow, &HoriRect);
         SDL_BlitSurface (verticalLine, NULL, surfaceWindow, &VertRect);
-        VertRect.x += 80;
-        HoriRect.y += 50;
+        VertRect.x += cellSize.w;
+        HoriRect.y += cellSize.h;
         };
         HoriRect.y = 99;
-        VertRect.x = 80;
+        VertRect.x = cellSize.w;
       };
 
   void GraphicsManager::CellDrawer (vector <Cell*> Cells) {
         for (auto x = 0; x < Cells.size(); x++){
           cellSize.x = (Cells[x]->posX * cellSize.w);
-          cellSize.y = (((Cells[x]->posY + 1) * cellSize.h) + 50);
+          cellSize.y = ((Cells[x]->posY * cellSize.h) + HoriRect.y);
           if (Cells[x]->getState() == true){
           SDL_BlitScaled (cellSprite, NULL, surfaceWindow, &cellSize);
           }
@@ -75,4 +77,15 @@ GraphicsManager::~GraphicsManager () {};
     	IMG_Init (IMG_INIT_PNG);
 
     }
-  }
+  };
+
+
+  void GraphicsManager::RenderArray (vector <SDL_Surface*> spriteArray, vector <SDL_Rect*> rectArray) {
+    for (auto current = 0; current < spriteArray.size(); current++){
+      SDL_BlitSurface (spriteArray[current], NULL, surfaceWindow, rectArray[current]);
+    };
+  };
+
+  void GraphicsManager::SetGridSize (int gridSize){
+    this->gridSize = gridSize;
+  };

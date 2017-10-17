@@ -1,4 +1,5 @@
 #include "SDL.h"
+#include <iostream>
 using namespace std;
 
 class InputHandler {
@@ -18,6 +19,7 @@ public:
 private:
 
 	SDL_Event event;
+	int mouseX, mouseY;
 	bool quit = false;
 
 
