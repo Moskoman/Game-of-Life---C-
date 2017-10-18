@@ -21,12 +21,3 @@ void State::LoadSpriteToArray (char* Path) {
 	SDL_Surface *newSprite = IMG_Load (Path);
 	spriteArray.push_back (newSprite);
 };
-
-void State::LoadRectToArray (int x, int y, int w, int h){
-	newRect.x = x;
-	newRect.y = y;
-	newRect.w = w;
-	newRect.h = h;
-
-	rectArray.push_back(&newRect);
-};

@@ -2,6 +2,7 @@
 #define INPUTHANDLER_H
 #include "SDL.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class InputHandler {
@@ -14,8 +15,11 @@ public:
 	~InputHandler ();
 
 	//Handles Inputs
-	bool ReadInput ();
+	vector <int> ReadInput ();
 
+	vector <int> GetMouseInput (int mouseX, int mouseY);
+
+	bool GetQuit ();
 
 private:
 

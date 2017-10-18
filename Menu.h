@@ -9,6 +9,10 @@ public:
 	Menu();
 	~Menu();
 
+	void TreatInput (vector <int> MouseInput);
+
+	void Update ();
+
 
 private:
 

@@ -19,16 +19,15 @@ public:
 
 	vector <SDL_Rect*> getRectArray ();
 
-	void LoadSpriteToArray (char* Path);
-
-	void LoadRectToArray (int x, int y, int w, int h);
-
+	virtual void TreatInput (vector <int> MouseInput) {};
 	
 	protected:
 		static State *instance;
-		SDL_Rect newRect;
 		vector <SDL_Surface*> spriteArray;
 		vector <SDL_Rect*> rectArray;
+		bool nextStateCondition;
+
+	void LoadSpriteToArray (char* Path);
 };
 
 #endif

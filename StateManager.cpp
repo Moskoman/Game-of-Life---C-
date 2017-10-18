@@ -41,7 +41,12 @@ bool StateManager::UserQuits () {
 };
 
 void StateManager::Update () {
-	if (Handler.ReadInput () == true){
+	vector <int> Input = Handler.ReadInput();
+	if (Handler.GetQuit () == true){
 		hasQuit = true;
+	};
+
+	if (Input.size() > 1){
+		currentState->TreatInput (Input);
 	};
 };
