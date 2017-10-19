@@ -28,5 +28,9 @@ add_executable(GoL
     State.cpp
     Menu.h
     Menu.cpp
+    GridSizeSelector.h
+    GridSizeSelector.cpp
+    Game.h
+    Game.cpp
     )
 target_link_libraries(GoL SDL2 SDL2_image SDL2_mixer SDL2_ttf)

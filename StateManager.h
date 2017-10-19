@@ -2,6 +2,8 @@
 #include "State.h"
 #include "InputHandler.h"
 #include "Menu.h"
+#include "GridSizeSelector.h"
+#include "Game.h"
 using namespace std;
 
 class StateManager {
@@ -22,6 +24,7 @@ public:
 private:
 	State* CreateState(int newState);
 	static StateManager *instance;
+	int stateCounter;
 	bool hasQuit = true;
 	InputHandler Handler;
 

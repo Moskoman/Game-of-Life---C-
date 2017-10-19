@@ -1,5 +1,7 @@
 #include "Menu.h"
 
+Menu* Menu::instance = nullptr;
+
 Menu::Menu () {
 
 	if (instance != nullptr){
@@ -16,7 +18,7 @@ Menu::~Menu(){};
 void Menu::Update () {};
 
 void Menu::Loader() {
-	
+  
   LoadSpriteToArray ("Assets/Menu/bg.png");
   rectMenuBG.x = rectMenuBG.y = 0;
   rectMenuBG.w = 801;
@@ -32,6 +34,6 @@ void Menu::Loader() {
 
 void Menu::TreatInput (vector <int> MouseInput){
   if ((MouseInput[0] > 300 && MouseInput[0] < 500) && (MouseInput[1] > 400 && MouseInput[1] < 500 )){
-    cout << "clicou" << endl;
+    nextStateCondition = true;
   }
 };

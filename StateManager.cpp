@@ -11,7 +11,8 @@ StateManager::StateManager() {
   }
   instance = this;
 
-SetState(1);
+stateCounter = 1;
+SetState(stateCounter);
 
 InputHandler Handler ();
 hasQuit = false;
@@ -32,6 +33,12 @@ State* StateManager::CreateState (int newState){
 	if (newState == 1){
 		returnNewState = new Menu ();
 	}
+	else if (newState == 2){
+		returnNewState = new GridSizeSelector ();
+	}
+	else if (newState == 3){
+		returnNewState = new Game ();
+	}
 
 	return returnNewState;
 };
@@ -48,5 +55,12 @@ void StateManager::Update () {
 
 	if (Input.size() > 1){
 		currentState->TreatInput (Input);
+	};
+
+	currentState->Update ();
+
+	if (currentState->getNextStateCondition () == true){
+		stateCounter++;
+		SetState(stateCounter);
 	};
 };

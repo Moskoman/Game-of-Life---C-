@@ -13,6 +13,7 @@ public:
 
 	void Update ();
 
+	static Menu* instance;
 
 private:
 

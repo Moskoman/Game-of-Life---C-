@@ -13,16 +13,19 @@ public:
 
 	~State();
 
-	void Update ();
+	virtual void Update () {};
 
 	vector <SDL_Surface*> getSpriteArray ();
 
 	vector <SDL_Rect*> getRectArray ();
 
+	bool getNextStateCondition ();
+
 	virtual void TreatInput (vector <int> MouseInput) {};
 	
 	protected:
-		static State *instance;
+
+		virtual void Loader () {};
 		vector <SDL_Surface*> spriteArray;
 		vector <SDL_Rect*> rectArray;
 		bool nextStateCondition;

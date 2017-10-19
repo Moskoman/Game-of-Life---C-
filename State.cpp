@@ -1,13 +1,8 @@
 #include "State.h"
 
-State* State::instance = nullptr;
-
 State::State() {};
 
 State::~State() {};
-
-void State::Update() {};
-
 
 vector <SDL_Surface*> State::getSpriteArray () {
 	return spriteArray;
@@ -20,4 +15,8 @@ vector <SDL_Rect*> State::getRectArray () {
 void State::LoadSpriteToArray (char* Path) {
 	SDL_Surface *newSprite = IMG_Load (Path);
 	spriteArray.push_back (newSprite);
+};
+
+bool State::getNextStateCondition () {
+	return nextStateCondition;
 };
