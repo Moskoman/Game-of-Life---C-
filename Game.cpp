@@ -15,8 +15,8 @@ Game::Game (int gridSize) {
   nextStateCondition = false;
   Loader ();
 
-  DerivationStrategy derivationStrategy  ();
   GridDrawer();
+  derivationStrategy.Populate(gridSize);
 };
 
 Game::~Game () {};
@@ -92,4 +92,13 @@ vector <SDL_Rect> Game::PopulateGridRectArray () {
 		GridRectArray.push_back (newRect);
 	};
 	return GridRectArray;
+};
+
+void Game::TreatInput (vector <int> MousePosition){
+	if (!isPLaying){
+		if ((MousePosition[0] > 100 && MousePosition[0] < (100 + usableScreenWidth)) && (MousePosition[1] > 100 && (MousePosition[1] < usableScreenHeight))){
+			cout << "clicou no grid" << endl;
+ 		}
+
+	};
 };

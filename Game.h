@@ -27,11 +27,10 @@ private:
 	void SetGridSize (int gridSize);
 	void GridDrawer ();
 	vector <SDL_Rect> PopulateGridRectArray ();
+	void TreatInput (vector <int> MousePosition);
 	DerivationStrategy derivationStrategy;
 	SDL_Rect gameBG;
-	SDL_Rect HoriRect;
-  	SDL_Rect VertRect;
-  	SDL_Rect cellSize;
+	SDL_Rect cellSize;
   	SDL_Surface *horizontalLine = nullptr;
   	SDL_Surface  *verticalLine = nullptr;
   	SDL_Surface *cellSprite = nullptr;
