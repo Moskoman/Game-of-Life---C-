@@ -28,11 +28,12 @@ private:
 	void GridDrawer ();
 	vector <SDL_Rect> PopulateGridRectArray ();
 	void TreatInput (vector <int> MousePosition);
+	void SetCellRect (Cell* cell);
+	void InitializeCellArray ();
+	vector <Cell*> gameCells;
 	DerivationStrategy derivationStrategy;
 	SDL_Rect gameBG;
 	SDL_Rect cellSize;
-  	SDL_Surface *horizontalLine = nullptr;
-  	SDL_Surface  *verticalLine = nullptr;
   	SDL_Surface *cellSprite = nullptr;
   	SDL_Surface *deadCell = nullptr;
 	int usableScreenHeight = 500;

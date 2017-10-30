@@ -15,8 +15,12 @@ Game::Game (int gridSize) {
   nextStateCondition = false;
   Loader ();
 
-  GridDrawer();
   derivationStrategy.Populate(gridSize);
+  derivationStrategy.Revive (4, 1);
+  derivationStrategy.Revive (4, 2);
+  derivationStrategy.Revive (4, 3);
+  GridDrawer();
+  InitializeCellArray ();
 };
 
 Game::~Game () {};
@@ -34,9 +38,6 @@ void Game::Loader () {
 	gameBG.h = 601;
 	rectArray.push_back (&gameBG);
 
-
-    horizontalLine = IMG_Load ("Assets/line.png");
-    verticalLine = IMG_Load ("Assets/verticalLine.png");
     cellSprite = IMG_Load ("Assets/cell.png");
     deadCell = IMG_Load ("Assets/deadCell.png");
 };
@@ -97,8 +98,30 @@ vector <SDL_Rect> Game::PopulateGridRectArray () {
 void Game::TreatInput (vector <int> MousePosition){
 	if (!isPLaying){
 		if ((MousePosition[0] > 100 && MousePosition[0] < (100 + usableScreenWidth)) && (MousePosition[1] > 100 && (MousePosition[1] < usableScreenHeight))){
-			cout << "clicou no grid" << endl;
+			
  		}
 
 	};
 };
+
+void Game::SetCellRect (Cell* cell){
+	cell->cellRect.x = cell->posX * cellSize.w + 101;
+	cell->cellRect.y = cell->posY * cellSize.h + 101;
+	cell->cellRect.w = cellSize.w - 1;
+	cell->cellRect.h = cellSize.h - 1;
+	rectArray.push_back(&cell->cellRect);
+}
+
+void Game::InitializeCellArray (){
+	gameCells = derivationStrategy.Cells;
+	for (auto i = 0; i < gameCells.size(); i++){
+		if (gameCells[i]->getState() == true){
+			LoadSpriteToArray("Assets/Game/cell.png");
+		}
+		else if (gameCells[i]->getState() == false){
+			LoadSpriteToArray("Assets/Game/deadCell.png");
+		};
+		SetCellRect(gameCells[i]);
+
+	}
+}

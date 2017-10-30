@@ -1,5 +1,6 @@
 #ifndef CELL_H
 #define CELL_H
+#include "SDL2/SDL.h"
 #include <iostream>
 using namespace std;
 
@@ -17,8 +18,11 @@ public:
 
   bool getState ();
   
+  SDL_Rect cellRect;
+  
 private:
   bool isAlive;
+
 
 };
 
