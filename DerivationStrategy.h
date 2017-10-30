@@ -13,7 +13,7 @@ public:
   ~DerivationStrategy ();
 
  //Run
-  	void Run ();
+  	vector <Cell*> NextGeneration ();
 
 //Game Methods
   vector <Cell*> ShouldRevive ();

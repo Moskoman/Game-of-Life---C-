@@ -17,7 +17,7 @@ DerivationStrategy::DerivationStrategy () {
 DerivationStrategy::~DerivationStrategy () {};
 
 	
-void DerivationStrategy::Run() {
+vector <Cell*> DerivationStrategy::NextGeneration() {
 	vector <Cell*> ReviveList = ShouldRevive ();
 	vector <Cell*> KeepAliveList = ShouldKeepAlive ();
 	vector <Cell*> NextGeneration;
@@ -34,7 +34,7 @@ void DerivationStrategy::Run() {
 			};
 		};
 	};
-	NextGeneration.clear();
+	return NextGeneration;
 };
 
 

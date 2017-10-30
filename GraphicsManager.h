@@ -14,8 +14,6 @@ public:
   void Run ();
 
 
-  void CellDrawer (vector <Cell*> AliveCells);
-
   void CreateWindow ();
 
   void RenderArray (vector <SDL_Surface*> spriteArray, vector <SDL_Rect*> rectArray);
@@ -23,21 +21,14 @@ public:
   void SetGridSize (int gridSize);
 
 private:
-  void GridDrawer (SDL_Surface *horizontalLine, SDL_Surface *verticalLine);
   
   static GraphicsManager *instance;
   SDL_Window *gameWindow = nullptr;
-  SDL_Surface *horizontalLine = nullptr;
-  SDL_Surface  *verticalLine = nullptr;
+
   SDL_Surface *surfaceWindow = nullptr;
-  SDL_Surface *cellSprite = nullptr;
-  SDL_Surface *deadCell = nullptr;
+
   SDL_Renderer *renderer = nullptr;
-  SDL_Rect HoriRect;
-  SDL_Rect VertRect;
-  SDL_Rect cellSize;
   int ScreenWidth = 801;
   int ScreenHeight = 601;
-  int gridSize;
   
 };

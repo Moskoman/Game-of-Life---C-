@@ -37,7 +37,7 @@ State* StateManager::CreateState (int newState){
 		returnNewState = new GridSizeSelector ();
 	}
 	else if (newState == 3){
-		returnNewState = new Game ();
+		returnNewState = new Game (10);
 	}
 
 	return returnNewState;
