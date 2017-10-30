@@ -27,7 +27,10 @@ Game::~Game () {};
 
 void Game::Update () {
 
-	derivationStrategy.NextGeneration();
+	if (isPLaying){
+		derivationStrategy.NextGeneration();
+		PrepareVectorWithCells();
+	};
 };
 
 void Game::Loader () {
@@ -124,4 +127,10 @@ void Game::InitializeCellArray (){
 		SetCellRect(gameCells[i]);
 
 	}
+}
+
+void Game::PrepareVectorWithCells () {
+	spriteArray.erase ((spriteArray.begin() + (gridSize * 2) + 3));
+	rectArray.erase ((rectArray.begin() + (gridSize * 2) + 3));
+	InitializeCellArray ();
 }

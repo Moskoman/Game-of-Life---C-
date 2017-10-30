@@ -30,6 +30,7 @@ private:
 	void TreatInput (vector <int> MousePosition);
 	void SetCellRect (Cell* cell);
 	void InitializeCellArray ();
+	void PrepareVectorWithCells ();
 	vector <Cell*> gameCells;
 	DerivationStrategy derivationStrategy;
 	SDL_Rect gameBG;
