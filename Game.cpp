@@ -21,7 +21,7 @@ Game::Game (int gridSize) {
   derivationStrategy.Revive (4, 3);
   GridDrawer();
   InitializeCellArray ();
-  isPLaying = true;
+  isPLaying = false;
 };
 
 Game::~Game () {};
@@ -97,9 +97,11 @@ void Game::TreatInput (vector <int> MousePosition){
  		else if ((MousePosition[0] > pauseButton.x && MousePosition[0] < (pauseButton.x + pauseButton.w)) && (MousePosition[1] > pauseButton.y && MousePosition[1] < (pauseButton.y + pauseButton.h))){
  			if (!isPLaying) {
  				isPLaying = true;
+ 				spriteArray[1] = IMG_Load ("Assets/Game/playButton.png");
  			}
  			else {
  				isPLaying = false;
+ 				spriteArray[1] = IMG_Load ("Assets/Game/pauseButton.png");
  			};
  		}
 
