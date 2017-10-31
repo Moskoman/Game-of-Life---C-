@@ -93,7 +93,8 @@ void Game::TreatInput (vector <int> MousePosition){
 	//click on grid
 		if ((MousePosition[0] > 100 && MousePosition[0] < (100 + usableScreenWidth)) && (MousePosition[1] > 100 && (MousePosition[1] < usableScreenHeight))){
 			if (!isPLaying){
-				derivationStrategy.ChangeCellState ((MousePosition[0] / cellSize.w), (MousePosition[1] /cellSize.h));
+				derivationStrategy.ChangeCellState (((MousePosition[0] - 100 )/ cellSize.w), ((MousePosition[1] - 100) /cellSize.h));
+			//	cout << ((MousePosition[0] - 100 )/ cellSize.w) << endl;
 			};
 			
  		}
