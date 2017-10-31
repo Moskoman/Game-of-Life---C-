@@ -11,7 +11,7 @@ class GameEngine {
 public:
 
 //Revive
- void Revive (int posX, int posY);
+ void ChangeCellState (int posX, int posY);
 
 
   vector<Cell*> Cells;

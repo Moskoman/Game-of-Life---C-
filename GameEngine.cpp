@@ -6,13 +6,18 @@ void GameEngine::NextGeneration () {
 };
 
 
-void GameEngine::Revive (int posX, int posY) {
+void GameEngine::ChangeCellState (int posX, int posY) {
 
 	for (auto y = 0; y < Cells.size(); y++){
 		vector <int> CellXY = GetCellPosition (Cells [y]);
 		if (CellXY[0] == posX && CellXY[1] == posY){
-			Cells[y]->setState (true);
-			break;
+			if (Cells[y]->getState() == false){
+				Cells[y]->setState (true);
+				break;
+			}
+			else if (Cells[y]->getState() == true){
+				Cells[y]->setState(false);
+			};
 		};
 	};
 };

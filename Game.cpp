@@ -16,9 +16,9 @@ Game::Game (int gridSize) {
   Loader ();
 
   derivationStrategy.Populate(gridSize);
-  derivationStrategy.Revive (4, 1);
-  derivationStrategy.Revive (4, 2);
-  derivationStrategy.Revive (4, 3);
+  derivationStrategy.ChangeCellState (4, 1);
+  derivationStrategy.ChangeCellState (4, 2);
+  derivationStrategy.ChangeCellState (4, 3);
   GridDrawer();
   InitializeCellArray ();
   isPLaying = false;
@@ -27,10 +27,10 @@ Game::Game (int gridSize) {
 Game::~Game () {};
 
 void Game::Update () {
+		PrepareVectorWithCells();
 
 	if (isPLaying){
 		derivationStrategy.NextGeneration();
-		PrepareVectorWithCells();
 	};
 };
 
@@ -92,8 +92,13 @@ void Game::TreatInput (vector <int> MousePosition){
 
 	//click on grid
 		if ((MousePosition[0] > 100 && MousePosition[0] < (100 + usableScreenWidth)) && (MousePosition[1] > 100 && (MousePosition[1] < usableScreenHeight))){
+			if (!isPLaying){
+				derivationStrategy.ChangeCellState ((MousePosition[0] / cellSize.w), (MousePosition[1] /cellSize.h));
+			};
 			
  		}
+
+ 	//pause button
  		else if ((MousePosition[0] > pauseButton.x && MousePosition[0] < (pauseButton.x + pauseButton.w)) && (MousePosition[1] > pauseButton.y && MousePosition[1] < (pauseButton.y + pauseButton.h))){
  			if (!isPLaying) {
  				isPLaying = true;
