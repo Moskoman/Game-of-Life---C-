@@ -19,10 +19,7 @@ GridSizeSelector::GridSizeSelector () {
 
 GridSizeSelector::~GridSizeSelector () {};
 
-void GridSizeSelector::Update () {
-
-	cout << gridSize << endl;
-};
+void GridSizeSelector::Update () {};
 
 void GridSizeSelector::Loader () {
 
@@ -31,14 +28,17 @@ void GridSizeSelector::Loader () {
 	gridSizeSelectorBG.w = 801;
 	gridSizeSelectorBG.h = 601;
 	rectArray.push_back (&gridSizeSelectorBG);
+
 	LoadSpriteToArray ("Assets/GridSelector/plusButton.png");
 	plusButton.x = 700;
 	plusButton.y = lessButton.y = 275;
 	plusButton.w = plusButton.h =  lessButton.w = lessButton.h = 50;
 	rectArray.push_back (&plusButton);
+
 	LoadSpriteToArray ("Assets/GridSelector/lessButton.png");
 	lessButton.x = 50;
 	rectArray.push_back (&lessButton);
+	
 	LoadSpriteToArray ("Assets/GridSelector/playButton.png");
 	playButton.x = 364;
 	playButton.y = 500;

@@ -33,8 +33,7 @@ private:
 	void PrepareVectorWithCells ();
 	vector <Cell*> gameCells;
 	DerivationStrategy derivationStrategy;
-	SDL_Rect gameBG;
-	SDL_Rect cellSize;
+	SDL_Rect gameBG, cellSize, pauseButton;
   	SDL_Surface *cellSprite = nullptr;
   	SDL_Surface *deadCell = nullptr;
 	int usableScreenHeight = 500;

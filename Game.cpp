@@ -21,6 +21,7 @@ Game::Game (int gridSize) {
   derivationStrategy.Revive (4, 3);
   GridDrawer();
   InitializeCellArray ();
+  isPLaying = true;
 };
 
 Game::~Game () {};
@@ -41,8 +42,11 @@ void Game::Loader () {
 	gameBG.h = 601;
 	rectArray.push_back (&gameBG);
 
-    cellSprite = IMG_Load ("Assets/cell.png");
-    deadCell = IMG_Load ("Assets/deadCell.png");
+	LoadSpriteToArray ("Assets/Game/pauseButton.png");
+	pauseButton.x = 364;
+	pauseButton.y = 10;
+	pauseButton.w = pauseButton.h = 75;
+	rectArray.push_back (&pauseButton);
 };
 
 void Game::GridDrawer () {
@@ -70,20 +74,6 @@ void Game::GridDrawer () {
 
  };
 
- /*         for (auto x = 0; x < Cells.size(); x++){
-          cellSize.x = (Cells[x]->posX * cellSize.w);
-          cellSize.y = ((Cells[x]->posY * cellSize.h) + HoriRect.y);
-          if (Cells[x]->getState() == true){
-          SDL_BlitScaled (cellSprite, NULL, surfaceWindow, &cellSize);
-          }
-          else{
-          SDL_BlitScaled (deadCell, NULL, surfaceWindow, &cellSize);  
-          };
-
-        };
-  };
-*/
-
 void Game::SetGridSize (int gridSize){
 	this->gridSize = gridSize;
 };
@@ -99,12 +89,20 @@ vector <SDL_Rect> Game::PopulateGridRectArray () {
 };
 
 void Game::TreatInput (vector <int> MousePosition){
-	if (!isPLaying){
+
+	//click on grid
 		if ((MousePosition[0] > 100 && MousePosition[0] < (100 + usableScreenWidth)) && (MousePosition[1] > 100 && (MousePosition[1] < usableScreenHeight))){
 			
  		}
+ 		else if ((MousePosition[0] > pauseButton.x && MousePosition[0] < (pauseButton.x + pauseButton.w)) && (MousePosition[1] > pauseButton.y && MousePosition[1] < (pauseButton.y + pauseButton.h))){
+ 			if (!isPLaying) {
+ 				isPLaying = true;
+ 			}
+ 			else {
+ 				isPLaying = false;
+ 			};
+ 		}
 
-	};
 };
 
 void Game::SetCellRect (Cell* cell){
@@ -130,7 +128,7 @@ void Game::InitializeCellArray (){
 }
 
 void Game::PrepareVectorWithCells () {
-	spriteArray.erase ((spriteArray.begin() + (gridSize * 2) + 3));
-	rectArray.erase ((rectArray.begin() + (gridSize * 2) + 3));
+	spriteArray.erase ((spriteArray.begin() + ((gridSize + 1) * 2) + 2));
+	rectArray.erase ((rectArray.begin() + ((gridSize + 1) * 2) + 2));
 	InitializeCellArray ();
 }
