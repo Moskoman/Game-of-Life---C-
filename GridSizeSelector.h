@@ -17,10 +17,10 @@ public:
 
 	static GridSizeSelector* instance;
 
+	int gridSize = 0;
 private:
 
 	void Loader();
-	int gridSize;
 	SDL_Rect gridSizeSelectorBG;
 	SDL_Rect plusButton;
 	SDL_Rect lessButton;

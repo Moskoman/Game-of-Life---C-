@@ -12,14 +12,16 @@ GridSizeSelector::GridSizeSelector () {
   instance = this;
   nextStateCondition = false;
   Loader ();
-
-  gridSize = 0;
+  cout << "entrou" << endl;
 
   };
 
 GridSizeSelector::~GridSizeSelector () {};
 
-void GridSizeSelector::Update () {};
+void GridSizeSelector::Update () {
+
+	//cout << gridSize << endl;
+};
 
 void GridSizeSelector::Loader () {
 
@@ -53,6 +55,7 @@ void GridSizeSelector::TreatInput (vector <int> MouseInput) {
 	};
 
 	if ((MouseInput[0] > plusButton.x && MouseInput[0] < (plusButton.x + plusButton.w)) && (MouseInput[1] > plusButton.y && MouseInput[1] < (plusButton.y + plusButton.h ))){
-    gridSize++;
-	};	
+    	this->gridSize++;
+    	cout << "clicou" << endl;
+	}	
 };

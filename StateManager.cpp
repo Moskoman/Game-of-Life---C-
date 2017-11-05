@@ -9,14 +9,11 @@ StateManager::StateManager() {
     cerr << "Too many StateManager instances" << endl;
     exit (1);
   }
-  instance = this;
-
-stateCounter = 1;
-SetState(stateCounter);
-
-InputHandler Handler ();
-hasQuit = false;
-
+	instance = this;
+	stateCounter = 1;
+	SetState(stateCounter);
+	InputHandler Handler ();
+	hasQuit = false;
 
 };
 
@@ -24,8 +21,10 @@ StateManager::~StateManager(){};
 
 void StateManager::SetState (int newState){
 	State *stateToSet = CreateState (newState);
+	if (stateCounter == 3){
+		stateToSet->gridSize = currentState->gridSize;
+	}
 	this->currentState = stateToSet;
-
 };
 
 State* StateManager::CreateState (int newState){
@@ -37,7 +36,7 @@ State* StateManager::CreateState (int newState){
 		returnNewState = new GridSizeSelector ();
 	}
 	else if (newState == 3){
-		returnNewState = new Game (10);
+		returnNewState = new Game (20);
 	}
 
 	return returnNewState;

@@ -19,8 +19,8 @@ public:
 
 	bool UserQuits ();
 
-
 	State *currentState = nullptr;
+	
 private:
 	State* CreateState(int newState);
 	static StateManager *instance;

@@ -4,6 +4,7 @@
 #include "SDL2/SDL_image.h"
 #include <vector>
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 
 class State
@@ -23,8 +24,10 @@ public:
 
 	virtual void TreatInput (vector <int> MouseInput) {};
 	
+		int gridSize;
 	protected:
 
+		unordered_map <string, SDL_Surface*> loadedSurfaces;
 		virtual void Loader () {};
 		vector <SDL_Surface*> spriteArray;
 		vector <SDL_Rect*> rectArray;

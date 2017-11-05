@@ -13,7 +13,15 @@ vector <SDL_Rect*> State::getRectArray () {
 };
 
 void State::LoadSpriteToArray (char* Path) {
-	SDL_Surface *newSprite = IMG_Load (Path);
+	SDL_Surface *newSprite;
+	string file (Path);
+	if (loadedSurfaces [file] == NULL){
+		newSprite = IMG_Load (Path);
+		loadedSurfaces[file] = newSprite;
+	}
+	else
+		newSprite = loadedSurfaces[file]; 
+		
 	spriteArray.push_back (newSprite);
 };
 

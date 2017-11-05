@@ -11,14 +11,10 @@ Game::Game (int gridSize) {
    		exit (1);
   	};	
   instance = this;
-  SetGridSize(gridSize);
   nextStateCondition = false;
+  SetGridSize(gridSize);
   Loader ();
-
   derivationStrategy.Populate(gridSize);
-  derivationStrategy.ChangeCellState (4, 1);
-  derivationStrategy.ChangeCellState (4, 2);
-  derivationStrategy.ChangeCellState (4, 3);
   GridDrawer();
   InitializeCellArray ();
   isPLaying = false;
@@ -27,11 +23,14 @@ Game::Game (int gridSize) {
 Game::~Game () {};
 
 void Game::Update () {
-		PrepareVectorWithCells();
+	PrepareVectorWithCells();
 
 	if (isPLaying){
 		derivationStrategy.NextGeneration();
 	};
+
+	cout << spriteArray.size() << endl;
+	cout << rectArray.size() << endl;
 };
 
 void Game::Loader () {
@@ -42,11 +41,14 @@ void Game::Loader () {
 	gameBG.h = 601;
 	rectArray.push_back (&gameBG);
 
-	LoadSpriteToArray ("Assets/Game/pauseButton.png");
+	LoadSpriteToArray ("Assets/Game/playButton.png");
 	pauseButton.x = 364;
 	pauseButton.y = 10;
 	pauseButton.w = pauseButton.h = 75;
 	rectArray.push_back (&pauseButton);
+
+	cellSprite = IMG_Load ("Assets/Game/cell.png");
+	deadCell = IMG_Load ("Assets/Game/deadCell.png");
 };
 
 void Game::GridDrawer () {
@@ -94,7 +96,6 @@ void Game::TreatInput (vector <int> MousePosition){
 		if ((MousePosition[0] > 100 && MousePosition[0] < (100 + usableScreenWidth)) && (MousePosition[1] > 100 && (MousePosition[1] < usableScreenHeight))){
 			if (!isPLaying){
 				derivationStrategy.ChangeCellState (((MousePosition[0] - 100 )/ cellSize.w), ((MousePosition[1] - 100) /cellSize.h));
-			//	cout << ((MousePosition[0] - 100 )/ cellSize.w) << endl;
 			};
 			
  		}
@@ -103,11 +104,11 @@ void Game::TreatInput (vector <int> MousePosition){
  		else if ((MousePosition[0] > pauseButton.x && MousePosition[0] < (pauseButton.x + pauseButton.w)) && (MousePosition[1] > pauseButton.y && MousePosition[1] < (pauseButton.y + pauseButton.h))){
  			if (!isPLaying) {
  				isPLaying = true;
- 				spriteArray[1] = IMG_Load ("Assets/Game/playButton.png");
+ 				spriteArray[1] = IMG_Load ("Assets/Game/pauseButton.png");
  			}
  			else {
  				isPLaying = false;
- 				spriteArray[1] = IMG_Load ("Assets/Game/pauseButton.png");
+ 				spriteArray[1] = IMG_Load ("Assets/Game/playButton.png");
  			};
  		}
 
@@ -125,18 +126,23 @@ void Game::InitializeCellArray (){
 	gameCells = derivationStrategy.Cells;
 	for (auto i = 0; i < gameCells.size(); i++){
 		if (gameCells[i]->getState() == true){
-			LoadSpriteToArray("Assets/Game/cell.png");
+			spriteArray.push_back(cellSprite);
 		}
 		else if (gameCells[i]->getState() == false){
-			LoadSpriteToArray("Assets/Game/deadCell.png");
+			//LoadSpriteToArray("Assets/Game/deadCell.png");
+			spriteArray.push_back (deadCell);
 		};
+		
 		SetCellRect(gameCells[i]);
-
-	}
+	};
 }
 
 void Game::PrepareVectorWithCells () {
-	spriteArray.erase ((spriteArray.begin() + ((gridSize + 1) * 2) + 2));
-	rectArray.erase ((rectArray.begin() + ((gridSize + 1) * 2) + 2));
+	/*for (auto x = ((gridSize + 1 ) * 2) + 2; x < spriteArray.size(); x++){
+		SDL_FreeSurface (spriteArray[x]);
+		cout << "deletou" << endl;
+	}; */
+	spriteArray.erase ((spriteArray.begin() + ((gridSize + 1) * 2) + 2), spriteArray.end());
+	rectArray.erase ((rectArray.begin() + ((gridSize + 1) * 2) + 2), rectArray.end());
 	InitializeCellArray ();
 }

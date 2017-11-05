@@ -38,7 +38,7 @@ private:
   	SDL_Surface *deadCell = nullptr;
 	int usableScreenHeight = 500;
 	int usableScreenWidth = 600;
-	int gridSize = 10;
+	int gridSize;
 
 	bool isPLaying = false;
 
