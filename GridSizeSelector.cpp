@@ -56,6 +56,6 @@ void GridSizeSelector::TreatInput (vector <int> MouseInput) {
 
 	if ((MouseInput[0] > plusButton.x && MouseInput[0] < (plusButton.x + plusButton.w)) && (MouseInput[1] > plusButton.y && MouseInput[1] < (plusButton.y + plusButton.h ))){
     	this->gridSize = gridSize + 1;
-    	cout << "clicou" << endl;
+    	
 	}	
 };
