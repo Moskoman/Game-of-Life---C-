@@ -48,15 +48,15 @@ int GameEngine::AliveNeighboors (Cell *cell) {
 	int numberOfAliveNeighboors = -1;
 	vector<int> CellXY = GetCellPosition (cell);
 	for (auto x = 0; x < Cells.size(); x++){
-		//Desculpa pela gambiarra :c kkkkkjjj??
-		if (Cells[x]->posX == CellXY[0] - 1 || Cells[x]->posX == CellXY [0] || Cells[x]->posX == CellXY[0] + 1){
-			if (Cells[x]->posY == CellXY[1] -1 || Cells[x]->posY == CellXY [1] || Cells [x]->posY == CellXY[1] + 1){
-				if (Cells[x]->getState() == true){
+		for (auto i = CellXY[0] - 1; i <= CellXY[0] + 1; i++){
+			for (auto y = CellXY[1] - 1; y <= CellXY[1] + 1; y++){
+				if (Cells[x]->posX == i && Cells[x]->posY == y && Cells[x]->getState() == true){
 					numberOfAliveNeighboors++;
 				};
 			};
 		};
-	}
+	} 
+	cout << numberOfAliveNeighboors << endl;
 	return numberOfAliveNeighboors;
 };
 
