@@ -17,7 +17,6 @@ public:
 
 	static GridSizeSelector* instance;
 
-	int gridSize = 0;
 private:
 
 	void Loader();

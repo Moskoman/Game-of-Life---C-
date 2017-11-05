@@ -25,6 +25,7 @@ public:
 	virtual void TreatInput (vector <int> MouseInput) {};
 	
 		int gridSize;
+		int GetGridSize(){return gridSize;};
 	protected:
 
 		unordered_map <string, SDL_Surface*> loadedSurfaces;

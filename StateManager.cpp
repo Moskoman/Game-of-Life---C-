@@ -21,8 +21,8 @@ StateManager::~StateManager(){};
 
 void StateManager::SetState (int newState){
 	State *stateToSet = CreateState (newState);
-	if (stateCounter == 3){
-		stateToSet->gridSize = currentState->gridSize;
+	if (newState != 1){
+		stateToSet->gridSize = currentState->GetGridSize();
 	}
 	this->currentState = stateToSet;
 };
@@ -36,7 +36,8 @@ State* StateManager::CreateState (int newState){
 		returnNewState = new GridSizeSelector ();
 	}
 	else if (newState == 3){
-		returnNewState = new Game (20);
+		int selectedGridSize = currentState->GetGridSize();
+		returnNewState = new Game (selectedGridSize);
 	}
 
 	return returnNewState;

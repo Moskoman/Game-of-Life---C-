@@ -28,9 +28,6 @@ void Game::Update () {
 	if (isPLaying){
 		derivationStrategy.NextGeneration();
 	};
-
-	cout << spriteArray.size() << endl;
-	cout << rectArray.size() << endl;
 };
 
 void Game::Loader () {
@@ -129,7 +126,6 @@ void Game::InitializeCellArray (){
 			spriteArray.push_back(cellSprite);
 		}
 		else if (gameCells[i]->getState() == false){
-			//LoadSpriteToArray("Assets/Game/deadCell.png");
 			spriteArray.push_back (deadCell);
 		};
 		
@@ -138,10 +134,6 @@ void Game::InitializeCellArray (){
 }
 
 void Game::PrepareVectorWithCells () {
-	/*for (auto x = ((gridSize + 1 ) * 2) + 2; x < spriteArray.size(); x++){
-		SDL_FreeSurface (spriteArray[x]);
-		cout << "deletou" << endl;
-	}; */
 	spriteArray.erase ((spriteArray.begin() + ((gridSize + 1) * 2) + 2), spriteArray.end());
 	rectArray.erase ((rectArray.begin() + ((gridSize + 1) * 2) + 2), rectArray.end());
 	InitializeCellArray ();
