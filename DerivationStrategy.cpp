@@ -55,5 +55,25 @@ DerivationStrategy* DerivationStrategy::CreateStrategy () {
   if (selectedStrategy != nullptr) {
     return selectedStrategy;
   }
-  return new Replicator ();
-};
+  switch (GridSizeSelector::selectedStrategy){
+      case 1:
+       return new OriginalStrategy ();
+       break;
+    case 2:
+       return new DayNight ();
+       break;
+    case 3:
+       return new HighLife ();
+       break;
+    case 4:
+       return new Maze ();
+       break;
+    case 5:
+       return new Replicator ();
+       break;
+    default:
+      return new OriginalStrategy ();
+    };
+
+
+    };

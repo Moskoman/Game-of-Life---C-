@@ -6,6 +6,7 @@
 
 #ifndef DERIVATIONSTRATEGY_H
 #define DERIVATIONSTRATEGY_H
+#include "GridSizeSelector.h"
 #include <iostream>
 #include "GameEngine.h"
 using namespace std;
