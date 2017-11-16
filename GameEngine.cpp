@@ -38,25 +38,25 @@ vector<int> GameEngine::GetCellPosition (Cell *cell) {
 	int y = cell->posY;
 	vector <int> CellXY;
 	CellXY.push_back (x);
-	CellXY.push_back (y);                                  
+	CellXY.push_back (y);             
 
 	return CellXY;
 };
 
-int GameEngine::AliveNeighboors (Cell *cell) {
+int GameEngine::AliveNeighboors (Cell *cell, vector <Cell*> recieveCells) {
 
 	int numberOfAliveNeighboors = -1;
 	vector<int> CellXY = GetCellPosition (cell);
-	for (auto x = 0; x < Cells.size(); x++){
+	for (auto x = 0; x < recieveCells.size(); x++){
 		for (auto i = CellXY[0] - 1; i <= CellXY[0] + 1; i++){
 			for (auto y = CellXY[1] - 1; y <= CellXY[1] + 1; y++){
-				if (Cells[x]->posX == i && Cells[x]->posY == y && Cells[x]->getState() == true){
+				if (recieveCells[x]->posX == i && recieveCells[x]->posY == y && recieveCells[x]->getState() == true){
 					numberOfAliveNeighboors++;
 				};
 			};
 		};
 	} 
-	cout << numberOfAliveNeighboors << endl;
+	cout << recieveCells.size () << endl;
 	return numberOfAliveNeighboors;
 };
 

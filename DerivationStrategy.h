@@ -1,3 +1,5 @@
+#include "OriginalStrategy.h"
+
 #ifndef DERIVATIONSTRATEGY_H
 #define DERIVATIONSTRATEGY_H
 #include <iostream>
@@ -9,18 +11,25 @@ class DerivationStrategy : public GameEngine {
 public:
 
 //Constructor and Destructor
-  DerivationStrategy ();
-  ~DerivationStrategy ();
+	DerivationStrategy ();
+	DerivationStrategy (int dummy);
+	~DerivationStrategy ();
 
  //Run
-  	vector <Cell*> NextGeneration ();
+	vector <Cell*> NextGeneration ();
 
 //Game Methods
-  vector <Cell*> ShouldRevive ();
-  vector <Cell*> ShouldKeepAlive ();
+	virtual vector <Cell*> ShouldRevive (vector <Cell*> Cells);
+	virtual vector <Cell*> ShouldKeepAlive (vector <Cell*> Cells);
 
 //Instance
-  static DerivationStrategy* instance;
+	static DerivationStrategy* instance;
+
+	vector <DerivationStrategy*> strategyList;
+
+	DerivationStrategy* selectedStrategy = nullptr;
+
+	DerivationStrategy* CreateStrategy ();
 
 };
 

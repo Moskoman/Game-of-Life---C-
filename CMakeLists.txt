@@ -16,8 +16,10 @@ add_executable(GoL
     GraphicsManager.cpp
     GameEngine.h
     GameEngine.cpp
+    OriginalStrategy.h
     DerivationStrategy.h
     DerivationStrategy.cpp
+    OriginalStrategy.cpp
     Cell.h
     Cell.cpp
     InputHandler.h

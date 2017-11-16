@@ -12,14 +12,12 @@ GridSizeSelector::GridSizeSelector () {
   instance = this;
   nextStateCondition = false;
   Loader ();
-  cout << "entrou" << endl;
 
   };
 
 GridSizeSelector::~GridSizeSelector () {};
 
 void GridSizeSelector::Update () {
-
 	cout << gridSize << endl;
 };
 
@@ -52,10 +50,15 @@ void GridSizeSelector::Loader () {
 void GridSizeSelector::TreatInput (vector <int> MouseInput) {
 	if ((MouseInput[0] > playButton.x && MouseInput[0] < (playButton.x + playButton.w)) && (MouseInput[1] > playButton.y && MouseInput[1] < (playButton.y + playButton.h ))){
     nextStateCondition = true;
-	};
+	}
 
-	if ((MouseInput[0] > plusButton.x && MouseInput[0] < (plusButton.x + plusButton.w)) && (MouseInput[1] > plusButton.y && MouseInput[1] < (plusButton.y + plusButton.h ))){
-    	this->gridSize = gridSize + 1;
+	else if ((MouseInput[0] > plusButton.x && MouseInput[0] < (plusButton.x + plusButton.w)) && (MouseInput[1] > plusButton.y && MouseInput[1] < (plusButton.y + plusButton.h ))){
+    	this->gridSize = gridSize + 5;
     	
-	}	
+	}
+
+	else if ((MouseInput[0] > lessButton.x && MouseInput[0] < (lessButton.x + lessButton.w)) && (MouseInput[1] > lessButton.y && MouseInput[1] < (lessButton.y + lessButton.h ))) {
+		this->gridSize = gridSize - 5;
+	}
+
 };

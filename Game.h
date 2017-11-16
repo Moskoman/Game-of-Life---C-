@@ -32,7 +32,7 @@ private:
 	void InitializeCellArray ();
 	void PrepareVectorWithCells ();
 	vector <Cell*> gameCells;
-	DerivationStrategy derivationStrategy;
+	DerivationStrategy *derivationStrategy = new DerivationStrategy(-1);
 	SDL_Rect gameBG, cellSize, pauseButton;
   	SDL_Surface *cellSprite = nullptr;
   	SDL_Surface *deadCell = nullptr;

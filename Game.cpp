@@ -14,7 +14,7 @@ Game::Game (int gridSize) {
   nextStateCondition = false;
   SetGridSize(gridSize);
   Loader ();
-  derivationStrategy.Populate(gridSize);
+  derivationStrategy->Populate(gridSize);
   GridDrawer();
   InitializeCellArray ();
   isPLaying = false;
@@ -26,7 +26,7 @@ void Game::Update () {
 	PrepareVectorWithCells();
 
 	if (isPLaying){
-		derivationStrategy.NextGeneration();
+		derivationStrategy->NextGeneration();
 	};
 };
 
@@ -92,7 +92,7 @@ void Game::TreatInput (vector <int> MousePosition){
 	//click on grid
 		if ((MousePosition[0] > 100 && MousePosition[0] < (100 + usableScreenWidth)) && (MousePosition[1] > 100 && (MousePosition[1] < usableScreenHeight))){
 			if (!isPLaying){
-				derivationStrategy.ChangeCellState (((MousePosition[0] - 100 )/ cellSize.w), ((MousePosition[1] - 100) /cellSize.h));
+				derivationStrategy->ChangeCellState (((MousePosition[0] - 100 )/ cellSize.w), ((MousePosition[1] - 100) /cellSize.h));
 			};
 			
  		}
@@ -120,7 +120,7 @@ void Game::SetCellRect (Cell* cell){
 }
 
 void Game::InitializeCellArray (){
-	gameCells = derivationStrategy.Cells;
+	gameCells = derivationStrategy->Cells;
 	for (auto i = 0; i < gameCells.size(); i++){
 		if (gameCells[i]->getState() == true){
 			spriteArray.push_back(cellSprite);

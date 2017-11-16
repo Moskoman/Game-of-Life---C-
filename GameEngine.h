@@ -29,7 +29,7 @@ vector<int> GetCellPosition (Cell *cell);
 
 
 //Return number of alive neighbors of a cell
-int AliveNeighboors (Cell *cell);
+int AliveNeighboors (Cell *cell, vector <Cell*> recieveCells);
 
 //calcula próxima geração
   void NextGeneration ();
