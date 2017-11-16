@@ -55,5 +55,5 @@ DerivationStrategy* DerivationStrategy::CreateStrategy () {
   if (selectedStrategy != nullptr) {
     return selectedStrategy;
   }
-  return new OriginalStrategy ();
+  return new Replicator ();
 };

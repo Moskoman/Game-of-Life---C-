@@ -1,16 +1,16 @@
-#include "OriginalStrategy.h"
+#include "HighLife.h"
 
-	OriginalStrategy::OriginalStrategy () {	};
+	HighLife::HighLife () {	};
 
-	OriginalStrategy::OriginalStrategy (int dummy) {};
+	HighLife::HighLife (int dummy) {};
 
-	OriginalStrategy::~OriginalStrategy () {};
+	HighLife::~HighLife () {};
 
-	vector <Cell*> OriginalStrategy::ShouldRevive (vector <Cell*> Cells) {
+	vector <Cell*> HighLife::ShouldRevive (vector <Cell*> Cells) {
 
 		vector <Cell*> ReviveList;
 		for (auto i = 0; i < Cells.size(); i++){
-			if (AliveNeighboors(Cells[i], Cells) == 2 && Cells[i]->getState() == false){
+			if ((AliveNeighboors(Cells[i], Cells) == 2 || AliveNeighboors(Cells[i], Cells) == 5) && Cells[i]->getState() == false){
 				ReviveList.push_back (Cells[i]);
 			};
 		};
@@ -18,7 +18,7 @@
 		return ReviveList;
 	};
 
-	vector <Cell*> OriginalStrategy::ShouldKeepAlive (vector <Cell*> Cellsa) {
+	vector <Cell*> HighLife::ShouldKeepAlive (vector <Cell*> Cellsa) {
 
 		vector <Cell*> KeepAlive;
 		for (auto x = 0; x < Cellsa.size(); x++){

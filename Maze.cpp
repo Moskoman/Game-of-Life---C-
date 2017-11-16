@@ -1,12 +1,12 @@
-#include "OriginalStrategy.h"
+#include "Maze.h"
 
-	OriginalStrategy::OriginalStrategy () {	};
+	Maze::Maze () {	};
 
-	OriginalStrategy::OriginalStrategy (int dummy) {};
+	Maze::Maze (int dummy) {};
 
-	OriginalStrategy::~OriginalStrategy () {};
+	Maze::~Maze () {};
 
-	vector <Cell*> OriginalStrategy::ShouldRevive (vector <Cell*> Cells) {
+	vector <Cell*> Maze::ShouldRevive (vector <Cell*> Cells) {
 
 		vector <Cell*> ReviveList;
 		for (auto i = 0; i < Cells.size(); i++){
@@ -18,12 +18,12 @@
 		return ReviveList;
 	};
 
-	vector <Cell*> OriginalStrategy::ShouldKeepAlive (vector <Cell*> Cellsa) {
+	vector <Cell*> Maze::ShouldKeepAlive (vector <Cell*> Cellsa) {
 
 		vector <Cell*> KeepAlive;
 		for (auto x = 0; x < Cellsa.size(); x++){
 			int cellAliveNeighboors = AliveNeighboors (Cellsa[x], Cellsa);
-			if (Cellsa[x]->getState() == true && (cellAliveNeighboors >= 2 && cellAliveNeighboors < 4)){
+			if (Cellsa[x]->getState() == true && (cellAliveNeighboors >= 0 && cellAliveNeighboors < 5)){
 				KeepAlive.push_back(Cellsa[x]);
 			};
 		};

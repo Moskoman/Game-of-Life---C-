@@ -56,7 +56,7 @@ int GameEngine::AliveNeighboors (Cell *cell, vector <Cell*> recieveCells) {
 			};
 		};
 	} 
-	cout << recieveCells.size () << endl;
+
 	return numberOfAliveNeighboors;
 };
 

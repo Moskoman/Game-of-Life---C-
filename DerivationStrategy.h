@@ -1,4 +1,8 @@
 #include "OriginalStrategy.h"
+#include "HighLife.h"
+#include "DayNight.h"
+#include "Maze.h"
+#include "Replicator.h"
 
 #ifndef DERIVATIONSTRATEGY_H
 #define DERIVATIONSTRATEGY_H

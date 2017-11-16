@@ -20,6 +20,14 @@ add_executable(GoL
     DerivationStrategy.h
     DerivationStrategy.cpp
     OriginalStrategy.cpp
+    HighLife.h
+    HighLife.cpp
+    DayNight.h
+    DayNight.cpp
+    Maze.h
+    Maze.cpp
+    Replicator.h
+    Replicator.cpp
     Cell.h
     Cell.cpp
     InputHandler.h
